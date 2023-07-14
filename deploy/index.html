@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deployment &mdash; AppEcosystemV2 latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/styles.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/dark.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/light.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/tabs.js"></script>
+        <script src="../_static/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Development" href="../development/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AppEcosystemV2
+              <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../definitions.html">Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#daemon-config-registration">Daemon config registration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-config">Deploy config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#deploy-config-options">Deploy config options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exapp-deployment">ExApp deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-result-json-output">Deploy result JSON output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-env-variables">Deploy env variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-daemon-remote">Docker daemon remote</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exapp-registration">ExApp registration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exapp-info-xml-schema">ExApp info.xml schema</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AppEcosystemV2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Deployment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/deploy/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="deployment">
+<h1>Deployment<a class="headerlink" href="#deployment" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>AppEcosystemV2 ExApps deployment process in short consists of 3 steps:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#daemon-config-registration">Daemon config registration</a></p></li>
+<li><p><a class="reference internal" href="#exapp-deployment">ExApp deployment</a></p></li>
+<li><p><a class="reference internal" href="#exapp-registration">ExApp registration</a></p></li>
+</ol>
+</section>
+<section id="daemon-config-registration">
+<h2>Daemon config registration<a class="headerlink" href="#daemon-config-registration" title="Permalink to this heading"></a></h2>
+<p>The first step is to register Daemon config, where your ExApps will be deployed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For now only Docker daemon (<cite>accepts-deploy-id: docker-install</cite>) is supported.</p>
+</div>
+<p>This can be done by <cite>occ</cite> CLI command <strong>app_ecosystem_v2:daemon:register</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>app_ecosystem_v2:daemon:register<span class="w"> </span>&lt;name&gt;<span class="w"> </span>&lt;display-name&gt;<span class="w"> </span>&lt;accepts-deploy-id&gt;<span class="w"> </span>&lt;protocol&gt;<span class="w"> </span>&lt;host&gt;<span class="w"> </span>&lt;nextcloud_url&gt;<span class="w"> </span><span class="o">[</span>--net<span class="w"> </span>NET<span class="o">]</span><span class="w"> </span><span class="o">[</span>--host<span class="w"> </span>HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ssl_key<span class="w"> </span>SSL_KEY<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ssl_key_password<span class="w"> </span>SSL_KEY_PASSWORD<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ssl_cert<span class="w"> </span>SSL_CERT<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ssl_cert_password<span class="w"> </span>SSL_CERT_PASSWORD<span class="o">]</span><span class="w"> </span><span class="o">[</span>--<span class="o">]</span>
+</pre></div>
+</div>
+<section id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>name</cite> - <cite>[required]</cite> unique name of the daemon (e.g. <cite>docker_local_sock</cite>)</p></li>
+<li><p><cite>display-name</cite> - <cite>[required]</cite> name of the daemon (e.g. <cite>My Local Docker</cite>, will be displayed in the UI)</p></li>
+<li><p><cite>accepts-deploy-id</cite> - <cite>[required]</cite> type of deployment (for now only <cite>docker-install</cite> is supported)</p></li>
+<li><p><cite>protocol</cite> - <cite>[required]</cite> protocol used to connect to the daemon (<cite>unix-socket</cite>, <cite>network</cite>)</p></li>
+<li><p><cite>host</cite> - <cite>[required]</cite> host of the daemon (e.g. <cite>/var/run/docker.sock</cite> for <cite>unix-socket</cite> protocol or <cite>host:port</cite> for <cite>http(s)</cite> protocol)</p></li>
+<li><p><cite>nextcloud_url</cite> - <cite>[required]</cite> Nextcloud URL, Daemon config required option (e.g. <cite>https://nextcloud.local</cite>)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="options">
+<h3>Options<a class="headerlink" href="#options" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>–net [network-name]</cite>  - <cite>[required]</cite> network name to bind docker container to (default: <cite>host</cite>)</p></li>
+<li><p><cite>–host HOST</cite> - <cite>[required]</cite> host to expose daemon to (defaults to ExApp appid)</p></li>
+<li><p><cite>–ssl_key SSL_KEY</cite> - <cite>[optional]</cite> path to SSL key file (local absolute path)</p></li>
+<li><p><cite>–ssl_password SSL_PASSWORD</cite> - <cite>[optional]</cite> SSL key password</p></li>
+<li><p><cite>–ssl_cert SSL_CERT</cite> - <cite>[optional]</cite> path to SSL cert file (local absolute path)</p></li>
+<li><p><cite>–ssl_cert_password SSL_CERT_PASSWORD</cite> - <cite>[optional]</cite> SSL cert password</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="deploy-config">
+<h3>Deploy config<a class="headerlink" href="#deploy-config" title="Permalink to this heading"></a></h3>
+<p>Deploy config is a set of additional options in Daemon config, which are used in deployment algorithms to configure
+ExApp container.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;net&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nextcloud&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nextcloud_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://nextcloud.local&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ssl_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/ssl/key.pem&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ssl_key_password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ssl_key_password&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ssl_cert&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/ssl/cert.pem&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ssl_cert_password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ssl_cert_password&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="deploy-config-options">
+<h4>Deploy config options<a class="headerlink" href="#deploy-config-options" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>net</cite> - <cite>[required]</cite> network name to bind docker container to (default: <cite>host</cite>)</p></li>
+<li><p><cite>host</cite> - <cite>[optional]</cite> in case Docker is on remote host, this should be a hostname of remote machine</p></li>
+<li><p><cite>nextcloud_url</cite> - <cite>[required]</cite> Nextcloud URL (e.g. <cite>https://nextcloud.local</cite>)</p></li>
+<li><p><cite>ssl_key</cite> - <cite>[optional]</cite> path to SSL key file (local absolute path)</p></li>
+<li><p><cite>ssl_key_password</cite> - <cite>[optional]</cite> SSL key password</p></li>
+<li><p><cite>ssl_cert</cite> - <cite>[optional]</cite> path to SSL cert file (local absolute path)</p></li>
+<li><p><cite>ssl_cert_password</cite> - <cite>[optional]</cite> SSL cert password</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Common configurations are tested by CI in our repository, see <a class="reference external" href="https://github.com/cloud-py-api/app_ecosystem_v2/blob/main/.github/workflows/tests-deploy.yml">workflow on github</a></p>
+</div>
+</section>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h3>
+<p>Example of <cite>occ</cite> <strong>app_ecosystem_v2:daemon:register</strong> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_ecosystem_v2:daemon:register<span class="w"> </span>docker_local_sock<span class="w"> </span><span class="s2">&quot;My Local Docker&quot;</span><span class="w"> </span>docker-install<span class="w"> </span>unix-socket<span class="w"> </span>/var/run/docker.sock<span class="w"> </span><span class="s2">&quot;https://nextcloud.local&quot;</span><span class="w"> </span>--net<span class="w"> </span>nextcloud
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exapp-deployment">
+<h2>ExApp deployment<a class="headerlink" href="#exapp-deployment" title="Permalink to this heading"></a></h2>
+<p>Second step is to deploy ExApp on registered daemon.
+This can be done by <cite>occ</cite> CLI command <strong>app_ecosystem_v2:app:deploy</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>app_ecosystem_v2:app:deploy<span class="w"> </span>&lt;appid&gt;<span class="w"> </span>&lt;daemon-config-name&gt;<span class="w"> </span><span class="o">[</span>--info-xml<span class="w"> </span>INFO-XML<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="p">|</span>--env<span class="w"> </span>ENV<span class="o">]</span><span class="w"> </span><span class="o">[</span>--<span class="o">]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>After successful deployment (pull, create and start container), there is a heartbeat check with 1 hour timeout (will be configurable).
+If command seems to be stuck, check if ExApp is running and accessible by Nextcloud instance.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For development this step is skipped, as ExApp is deployed and started manually by developer.</p>
+</div>
+<section id="id1">
+<h3>Arguments<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>appid</cite> - <cite>[required]</cite> unique name of the ExApp (e.g. <cite>app_python_skeleton</cite>, must be the same as in <cite>info.xml</cite>)</p></li>
+<li><p><cite>daemon-config-name</cite> - <cite>[required]</cite> unique name of the daemon (e.g. <cite>docker_local_sock</cite>)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Options<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>–info-xml INFO-XML</cite> - <cite>[required]</cite> path to info.xml file (url or local absolute path)</p></li>
+<li><p><cite>-e|–env ENV</cite> - <cite>[optional]</cite> additional environment variables (e.g. <cite>-e “MY_VAR=123” -e “MY_VAR2=456”</cite>)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="deploy-result-json-output">
+<h3>Deploy result JSON output<a class="headerlink" href="#deploy-result-json-output" title="Permalink to this heading"></a></h3>
+<p>Example of deploy result JSON output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;appid&quot;</span><span class="p">:</span> <span class="s2">&quot;app_python_skeleton&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;App Python Skeleton&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;daemon_config_name&quot;</span><span class="p">:</span> <span class="s2">&quot;local_docker_sock&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;secret&quot;</span><span class="p">:</span><span class="s2">&quot;***generated-secret***&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;app_python_skeleton&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;9001&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;system_app&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This JSON output is used in ExApp registration step.</p>
+</section>
+<section id="deploy-env-variables">
+<h3>Deploy env variables<a class="headerlink" href="#deploy-env-variables" title="Permalink to this heading"></a></h3>
+<p>Deploy env variables are used to configure ExApp container.
+The following env variables are required and built automatically:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>AE_VERSION</cite> - AppEcosystemV2 version</p></li>
+<li><p><cite>APP_SECRET</cite> - generated shared secret used for AppEcosystemV2 authentication</p></li>
+<li><p><cite>APP_ID</cite> - ExApp appid</p></li>
+<li><p><cite>APP_VERSION</cite> - ExApp version</p></li>
+<li><p><cite>APP_HOST</cite> - host ExApp is listening on</p></li>
+<li><p><cite>APP_PORT</cite> - port ExApp is listening on (randomly selected by AppEcosystemV2)</p></li>
+<li><p><cite>NEXTCLOUD_URL</cite> - Nextcloud URL to connect to</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>additional envs can be passed using multiple <cite>–env ENV_NAME=ENV_VAL</cite> options)</p>
+</div>
+</section>
+<section id="docker-daemon-remote">
+<h3>Docker daemon remote<a class="headerlink" href="#docker-daemon-remote" title="Permalink to this heading"></a></h3>
+<p>If you want to connect to remote docker daemon with TLS enabled, you need to provide SSL key and cert by provided options.
+Important: before deploy you need to import ca.pem file using occ command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">php</span> <span class="pre">occ</span> <span class="pre">security:certificates:import</span> <span class="pre">/path/to/ca.pem</span>
+<span class="pre">`</span></code></p>
+<p>The daemon must be configured with <cite>protocol=http|https</cite>, <cite>host=https://dockerapihost</cite>, <cite>port=8443</cite>.
+More info about how to configure daemon will be added soon.</p>
+</section>
+</section>
+<section id="exapp-registration">
+<h2>ExApp registration<a class="headerlink" href="#exapp-registration" title="Permalink to this heading"></a></h2>
+<p>Final step is to register ExApp in Nextcloud.
+This can be done by <cite>occ</cite> CLI command <strong>app_ecosystem_v2:app:register</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>app_ecosystem_v2:app:register<span class="w"> </span>&lt;deploy-json-output&gt;<span class="w"> </span><span class="o">[</span>-e<span class="p">|</span>--enabled<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force-scopes<span class="o">]</span><span class="w"> </span><span class="o">[</span>--<span class="o">]</span>
+</pre></div>
+</div>
+<section id="id3">
+<h3>Arguments<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>deploy-json-output</cite> - <cite>[required]</cite> JSON output from deploy step</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3>Options<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>-e|–enabled</cite> - <cite>[optional]</cite> enable ExApp after registration</p></li>
+<li><p><cite>–force-scopes</cite> - <cite>[optional]</cite> force scopes approval</p></li>
+</ul>
+</div></blockquote>
+<p>This step can be combined with deployment step into one command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_ecosystem_v2:app:register<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_ecosystem_v2:app:deploy<span class="w"> </span>app_python_skeleton<span class="w"> </span>docker_local_sock<span class="w"> </span>--info-xml<span class="w"> </span>https://raw.githubusercontent.com/cloud-py-api/py_app_v2-skeleton/main/appinfo/info.xml<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>--enabled<span class="w"> </span>--force-scopes
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exapp-info-xml-schema">
+<h2>ExApp info.xml schema<a class="headerlink" href="#exapp-info-xml-schema" title="Permalink to this heading"></a></h2>
+<p>ExApp info.xml (<a class="reference external" href="https://github.com/cloud-py-api/py_app_v2-skeleton">example repo</a>) file is used to describe ExApp params.
+It is used to generate ExApp docker container and to register ExApp in Nextcloud.
+It has the same structure as Nextcloud appinfo/info.xml file, but with some additional fields:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>...
+<span class="nt">&lt;ex-app&gt;</span>
+<span class="w">        </span><span class="nt">&lt;docker-install&gt;</span>
+<span class="w">                </span><span class="nt">&lt;registry&gt;</span>ghcr.io<span class="nt">&lt;/registry&gt;</span>
+<span class="w">                </span><span class="nt">&lt;image&gt;</span>cloud-py-api/py_app_v2-skeleton<span class="nt">&lt;/image&gt;</span>
+<span class="w">                </span><span class="nt">&lt;image-tag&gt;</span>latest<span class="nt">&lt;/image-tag&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/docker-install&gt;</span>
+<span class="w">        </span><span class="nt">&lt;protocol&gt;</span>http<span class="nt">&lt;/protocol&gt;</span>
+<span class="w">        </span><span class="nt">&lt;system&gt;</span>0<span class="nt">&lt;/system&gt;</span>
+<span class="nt">&lt;/ex-app&gt;</span>
+...
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../development/index.html" class="btn btn-neutral float-left" title="Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Nextcloud GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
